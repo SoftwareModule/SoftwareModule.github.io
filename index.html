@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPhone Message GUI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="profile-banner">
+        <div class="profile-pic" id="profilePic">J</div>
+        <div class="receiver-name" id="receiverName">John Doe</div>
+      </div>
+      <div class="messages" id="messages"></div>
+      <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <button onclick="sendMessage('sender')">Send</button>
+        <button class="receiver-button" onclick="sendMessage('receiver')">
+          Send as Receiver
+        </button>
+        <div class="new-chat-input" id="newChatInputContainer">
+          <input
+            type="text"
+            id="newReceiverName"
+            placeholder="Enter new receiver name"
+          />
+          <button class="newchat-button" onclick="newChat()">New Chat</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
