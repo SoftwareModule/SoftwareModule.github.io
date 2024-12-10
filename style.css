@@ -7,11 +7,12 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  flex-direction: column;
 }
 
 .chat-container {
-  width: 375px;
-  height: 667px;
+  width: 393.75px;
+  height: 700.35px;
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -25,26 +26,32 @@ body {
   background-color: #f9f9f9;
   text-align: center;
   border-bottom: 1px solid #ccc;
-}
-
-.profile-banner .profile-pic {
-  width: 50px;
-  height: 50px;
-  background-color: #007aff;
-  color: white;
-  font-size: 32px;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
-  margin-left: 43.75%;
+  height: 50px;
+}
+
+.profile-banner .profile-pic { 
+  width: 40px; 
+  height: 40px; 
+  background-color: #007aff; 
+  color: white; 
+  font-size: 24px; 
+  font-family: 'Roboto', sans-serif;
+  border-radius: 50%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin: 0; 
+  padding: 0; 
 }
 
 .profile-banner .receiver-name {
   font-size: 20px;
   color: #232323;
-  margin-bottom: 5px;
+  margin: 0;
+  padding-left: 10px;
 }
 
 .messages {
@@ -164,4 +171,92 @@ body {
   text-align: center;
   padding: 10px;
   box-sizing: border-box;
+}
+
+.commits {
+  margin-top: 20px; 
+  padding: 0; 
+  background-color: #f9f9f9;
+  border-radius: 10px; 
+  border: 1px solid #ccc;
+  width: 375px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.close-button {
+  background: none; 
+  border: none;
+  color: #acaeaf; 
+  font-size: 18px;
+  cursor: pointer; 
+  position: absolute;
+  right: 1px; 
+  top: 2px;
+  transition: font-size 0.05s ease; 
+}
+
+.close-button:hover {
+  font-size: 21px;
+}
+
+.commit-header {
+  padding: 10px; 
+  font-size: 18px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; 
+  font-weight: bold;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ccc; 
+  position: relative; 
+}
+
+.commit-items-container {
+  height: 150px; 
+  margin-top: -12.5px;
+  overflow-y: auto;
+  padding: 10px; 
+}
+
+.commit-items-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.commit-items-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.commit-items-container::-webkit-scrollbar-thumb {
+  background: rgba(207, 207, 207, 0.5); 
+  border-radius: 10px; 
+}
+
+.commit-items-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(207, 207, 207, 0.7);
+}
+
+.commit-items-container::-webkit-scrollbar-button {
+  display: none;
+}
+
+.commit-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #232323;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  cursor: default;
+}
+
+.commit-item:hover {
+  background-color: #f3f3f3;
+}
+
+.commit-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.commit-item:last-child {
+  border-bottom: none;
 }
