@@ -3,32 +3,40 @@ function sendMessage(role) {
   const input = document.getElementById("messageInput");
   const text = input.value.trim();
 
-  if (!text) return;
-
-  const messageContainer = document.createElement("div");
-  messageContainer.classList.add("message-container");
-
-  const message = document.createElement("div");
-  message.classList.add("message", role);
-  message.textContent = text;
-
-  const timestamp = document.createElement("div");
-  timestamp.classList.add("timestamp");
-  timestamp.textContent = getTimeStamp();
-
-  if (role === "receiver") {
-    timestamp.style.textAlign = "left";
+  if (!text) {
+    playAudio("error");
   } else {
-    timestamp.style.textAlign = "right";
+    const messageContainer = document.createElement("div");
+    messageContainer.classList.add("message-container");
+
+    const message = document.createElement("div");
+    message.classList.add("message", role);
+    message.textContent = text;
+
+    const timestamp = document.createElement("div");
+    timestamp.classList.add("timestamp");
+    timestamp.textContent = getTimeStamp();
+
+    if (role === "receiver") {
+      timestamp.style.textAlign = "left";
+    } else {
+      timestamp.style.textAlign = "right";
+    }
+
+    messageContainer.appendChild(message);
+    messageContainer.appendChild(timestamp);
+
+    messages.appendChild(messageContainer);
+    input.value = "";
+
+    if (role == "receiver") {
+      playAudio("receiver");
+    } else {
+      playAudio("sender");
+    }
+
+    messages.scrollTop = messages.scrollHeight;
   }
-
-  messageContainer.appendChild(message);
-  messageContainer.appendChild(timestamp);
-
-  messages.appendChild(messageContainer);
-  input.value = "";
-
-  messages.scrollTop = messages.scrollHeight;
 }
 
 function getTimeStamp() {
@@ -48,16 +56,38 @@ function newChat() {
     .value.trim();
 
   if (!newReceiverName) {
-    return;
+    playAudio("error");
+  } else {
+    document.getElementById("receiverName").textContent = newReceiverName;
+    document.getElementById("profilePic").textContent = newReceiverName
+      .charAt(0)
+      .toUpperCase();
+    document.getElementById("messages").innerHTML = "";
+
+    document.getElementById("newReceiverName").value = "";
+
+    document.getElementById("messageInput").value = "";
+
+    playAudio("new-chat");
   }
-
-  document.getElementById("receiverName").textContent = newReceiverName;
-  document.getElementById("profilePic").textContent = newReceiverName
-    .charAt(0)
-    .toUpperCase();
-  document.getElementById("messages").innerHTML = "";
-
-  document.getElementById("newReceiverName").value = "";
-
-  document.getElementById("messageInput").value = "";
 }
+
+function playAudio(audio) {
+  const audioElement = new Audio(`Sounds/${audio}.mp3`);
+  audioElement.play();
+}
+
+function removeCommits() {
+  const commitsDiv = document.querySelector(".commits");
+  if (commitsDiv) {
+    commitsDiv.remove();
+    playAudio("button-hover")
+  }
+}
+
+// const buttons = document.querySelectorAll("button");
+// buttons.forEach((button) => {
+//   button.addEventListener("mouseover", () => {
+//     playAudio("button-hover");
+//   });
+// });
